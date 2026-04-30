@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAP & SHOP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Underline:wght@400&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: "Kyiv";
+  src: url("Kyiv-Light.otf") format("opentype");
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: "Kyiv", sans-serif;
+}
+
+.top-bar {
+  height: 118px;
+  border-bottom: 1px solid #000;
+  background: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.nav-left {
+  position: absolute;
+  left: 40px;
+  top: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-right {
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Montserrat Underline", sans-serif;
+  font-size: 48px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 0;
+}
+
+.filter {
+  padding: 10px 26px;
+  border: 1px solid #000;
+  border-radius: 999px;
+  background: white;
+  cursor: pointer;
+
+  transition: 0.08s linear, color 0.08s linear;
+}
+
+body,
+.nav-left,
+.nav-right,
+.filter,
+.my-label,
+.buy-btn,
+.trade-btn,
+.popup,
+.search-overlay,
+.search-box input {
+  font-family: "Kyiv", sans-serif;
+}
+
+.filter.active {
+  background: #45FC47;
+  color: black;
+}
+
+.filter:hover {
+  background: rgba(217, 217, 217, 0.4);
+  color: black;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+}
+
+.swap-area {
+  position: relative;
+  width: 1300px;
+  height: 555px;
+}
+
+.left-card {
+  position: absolute;
+  left: 0;
+  width: 555px;
+}
+
+.my-label {
+  position: absolute;
+  top: -40px;
+  left: 38px;
+  width: 130px;
+  height: 48px;
+  background: black;
+  color: white;
+  border-radius: 9px 9px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 11px;
+  z-index: 1;
+}
+
+.card-stack {
+  position: relative;
+  width: 555px;
+  height: 555px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.stack-card {
+  position: absolute;
+  width: 555px;
+  height: 555px;
+  object-fit: contain;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  will-change: transform, opacity;
+}
+
+.stack-card.first {
+  z-index: 3;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.stack-card.second {
+  z-index: 2;
+  transform: translate(-4px, 4px);
+  opacity: 1;
+}
+
+.stack-card.third {
+  z-index: 1;
+  transform: translate(-8px, 8px);
+  opacity: 1;
+}
+
+.stack-card.move-back {
+  z-index: 4;
+  transform: translate(18px, 6px) scale(0.995);
+  opacity: 0;
+}
+
+.card-wrap {
+  width: 555px;
+  height: 555px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-card {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.right-card {
+  position: absolute;
+  right: 0;
+  width: 555px;
+}
+
+.right-card .card-wrap {
+  cursor: pointer;
+  overflow: visible;
+}
+
+.right-content {
+  transition: transform 0.28s ease, opacity 0.28s ease;
+  will-change: transform, opacity;
+}
+
+.right-content.slide-up {
+  transform: translateY(-26px);
+  opacity: 0;
+}
+
+.right-content.slide-in {
+  transform: translateY(26px);
+  opacity: 0;
+}
+
+.right-card-img {
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 0.8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500.1px;
+  height: 42px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  border-radius: 0 0 7px 7px;
+  overflow: hidden;
+  border-top: 1px solid #000;
+}
+
+.buy-btn {
+  background: black;
+  color: white;
+  border: none;
+}
+
+.trade-btn {
+  background: rgba(217, 217, 217, 0.4);
+  border: none;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+.trade-btn:hover {
+  background: #45FC47;
+}
+
+.swap-icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 576px;
+  height: 127px;
+  background: #45FC47;
+  border: 1px solid #000;
+  z-index: 50;
+  display: none;
+  padding: 32px 48px;
+}
+
+.popup.show {
+  display: block;
+}
+
+.popup h2 {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+}
+
+.popup p {
+  margin: 0;
+  font-size: 20px;
+}
+
+.close-popup {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.search-overlay {
+  position: fixed;
+  top: 118px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: #45FC47;
+  border-bottom: 1px solid #000;
+  z-index: 40;
+  display: none;
+}
+
+.search-overlay.show {
+  display: block;
+}
+
+.close-search {
+  position: absolute;
+  top: 24px;
+  right: 34px;
+  width: 28px;
+  height: 28px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.search-box {
+  position: absolute;
+  left: 70px;
+  bottom: 35px;
+  width: calc(100% - 140px);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 12px;
+}
+
+.search-icon {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 32px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-bar">
+  <div class="nav-left">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="logo">SWAP & SHOP</div>
+
+  <div class="nav-right">
+    <a href="#" id="searchBtn">Search</a>
+    <a href="profile.html">
+      <img src="Union.png" width="24">
+    </a>
+  </div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <button class="close-search" id="closeSearch">×</button>
+
+  <div class="search-box">
+    <span class="search-icon">⌕</span>
+    <input type="text">
+  </div>
+</div>
+
+<section class="filter-bar">
+  <button class="filter active" data-category="ALL">ALL</button>
+  <button class="filter" data-category="Tops">Tops</button>
+  <button class="filter" data-category="Bottoms">Bottoms</button>
+  <button class="filter" data-category="Shoes">Shoes</button>
+  <button class="filter" data-category="Bags">Bags</button>
+  <button class="filter" data-category="Accessories">Accessories</button>
+</section>
+
+<main class="main">
+  <div class="swap-area">
+
+    <div class="left-card">
+      <div class="my-label" onclick="location.href='profile.html'" style="cursor:pointer;">
+  MY ITEM
+</div>
+
+      <div class="card-stack" id="cardStack">
+        <img src="1.png" class="stack-card first" data-base="1">
+        <img src="2.png" class="stack-card second" data-base="2">
+        <img src="3.png" class="stack-card third" data-base="3">
+      </div>
+    </div>
+
+    <img src="swap.png" class="swap-icon" id="swapBtn">
+
+    <div class="right-card">
+      <div class="right-content" id="rightContent">
+        <div class="card-wrap" id="rightCardClick">
+          <img src="1A1.png" class="item-card right-card-img" id="rightItem">
+        </div>
+
+        <div class="buttons">
+          <button class="buy-btn">Buy Now</button>
+          <button class="trade-btn" id="requestBtn">Request Trade</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div class="popup" id="requestPopup">
+  <button class="close-popup" id="closePopup">×</button>
+  <h2>Swap Request Sent</h2>
+  <p>you’ll be notified when the other user responds.</p>
+</div>
+
+<script>
+const filters = document.querySelectorAll(".filter");
+let currentCategory = "ALL";
+let currentRightIndex = 0;
+
+const rightItem = document.getElementById("rightItem");
+
+const itemGroups = {
+  "1": {
+    ALL: ["1A1.png", "1A2.png", "1A3.png", "1B1.png", "1B2.png", "1B3.png", "1BA1.png", "1BA2.png", "1S1.png", "1S2.png", "1S3.png", "1T1.png", "1T2.png", "1T3.png"],
+    Tops: ["1T1.png", "1T2.png", "1T3.png"],
+    Bottoms: ["1B1.png", "1B2.png", "1B3.png"],
+    Shoes: ["1S1.png", "1S2.png", "1S3.png"],
+    Bags: ["1BA1.png", "1BA2.png"],
+    Accessories: ["1A1.png", "1A2.png", "1A3.png"]
+  },
+  "2": {
+    ALL: ["2A1.png", "2A2.png", "2A3.png", "2B1.png", "2B2.png", "2B3.png", "2BA1.png", "2BA2.png", "2S1.png", "2S2.png", "2S3.png", "2T1.png", "2T2.png"],
+    Tops: ["2T1.png", "2T2.png"],
+    Bottoms: ["2B1.png", "2B2.png", "2B3.png"],
+    Shoes: ["2S1.png", "2S2.png", "2S3.png"],
+    Bags: ["2BA1.png", "2BA2.png"],
+    Accessories: ["2A1.png", "2A2.png", "2A3.png"]
+  },
+  "3": {
+    ALL: ["3A1.png", "3A2.png", "3A3.png", "3B1.png", "3B2.png", "3BA1.png", "3BA2.png", "3BA3.png", "3S1.png", "3S2.png", "3S3.png", "3T4.png", "3T2.png", "3T3.png"],
+    Tops: ["3T4.png", "3T2.png", "3T3.png"],
+    Bottoms: ["3B1.png", "3B2.png"],
+    Shoes: ["3S1.png", "3S2.png", "3S3.png"],
+    Bags: ["3BA1.png", "3BA2.png", "3BA3.png"],
+    Accessories: ["3A1.png", "3A2.png", "3A3.png"]
+  }
+};
+
+function getCurrentBase() {
+  return stackCards[0].dataset.base;
+}
+
+function updateRightCard(resetIndex = true) {
+  const base = getCurrentBase();
+  const group = itemGroups[base][currentCategory];
+
+  if (resetIndex) currentRightIndex = 0;
+  rightItem.src = group[currentRightIndex];
+}
+
+const rightContent = document.getElementById("rightContent");
+
+function nextRightCard() {
+  const base = getCurrentBase();
+  const group = itemGroups[base][currentCategory];
+
+  rightContent.classList.add("slide-up");
+
+  setTimeout(() => {
+    currentRightIndex = (currentRightIndex + 1) % group.length;
+    rightItem.src = group[currentRightIndex];
+
+    rightContent.classList.remove("slide-up");
+    rightContent.classList.add("slide-in");
+
+    requestAnimationFrame(() => {
+      rightContent.classList.remove("slide-in");
+    });
+  }, 260);
+}
+
+filters.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filters.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    currentCategory = btn.dataset.category;
+    updateRightCard(true);
+  });
+});
+
+const requestBtn = document.getElementById("requestBtn");
+const requestPopup = document.getElementById("requestPopup");
+const closePopup = document.getElementById("closePopup");
+
+requestBtn.addEventListener("click", () => {
+  requestPopup.classList.add("show");
+});
+
+closePopup.addEventListener("click", () => {
+  requestPopup.classList.remove("show");
+});
+
+const searchBtn = document.getElementById("searchBtn");
+const searchOverlay = document.getElementById("searchOverlay");
+const closeSearch = document.getElementById("closeSearch");
+const searchInput = searchOverlay.querySelector("input");
+
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  searchOverlay.classList.add("show");
+  searchInput.focus();
+});
+
+closeSearch.addEventListener("click", () => {
+  searchOverlay.classList.remove("show");
+});
+
+const cardStack = document.getElementById("cardStack");
+let stackCards = Array.from(document.querySelectorAll(".stack-card"));
+
+function updateStack() {
+  stackCards.forEach(card => {
+    card.classList.remove("first", "second", "third", "move-back");
+  });
+
+  stackCards[0].classList.add("first");
+  stackCards[1].classList.add("second");
+  stackCards[2].classList.add("third");
+
+  updateRightCard(true);
+}
+
+cardStack.addEventListener("click", () => {
+  const frontCard = stackCards[0];
+
+  frontCard.classList.add("move-back");
+
+  setTimeout(() => {
+    stackCards.push(stackCards.shift());
+    updateStack();
+  }, 350);
+});
+
+document.getElementById("rightCardClick").addEventListener("click", nextRightCard);
+document.getElementById("swapBtn").addEventListener("click", nextRightCard);
+
+updateStack();
+</script>
+
+</body>
+</html>
