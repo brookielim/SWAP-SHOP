@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile | SWAP & SHOP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Underline:wght@400&display=swap" rel="stylesheet">
+
+<style>
+@font-face {
+  font-family: "Kyiv";
+  src: url("Kyiv-Light.otf") format("opentype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Kyiv";
+  src: url("Kyiv-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: "Kyiv", sans-serif;
+  font-weight: 400;
+}
+
+.top-bar {
+  height: 118px;
+  border-bottom: 1px solid #000;
+  background: #F0F0F0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.nav-left {
+  position: absolute;
+  left: 40px;
+  top: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-right {
+  position: absolute;
+  right: 40px;
+  top: 30px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Montserrat Underline", sans-serif;
+  font-size: 48px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* SEARCH */
+.search-overlay {
+  position: fixed;
+  top: 118px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: #45FC47;
+  border-bottom: 1px solid #000;
+  z-index: 40;
+  display: none;
+}
+
+.search-overlay.show {
+  display: block;
+}
+
+.close-search {
+  position: absolute;
+  top: 24px;
+  right: 34px;
+  width: 28px;
+  height: 28px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.search-box {
+  position: absolute;
+  left: 70px;
+  bottom: 35px;
+  width: calc(100% - 140px);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 12px;
+}
+
+.search-icon {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.search-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: "Kyiv", sans-serif;
+  font-size: 32px;
+}
+
+.profile-main {
+  padding: 90px 95px 0;
+}
+
+.profile-box {
+  width: 100%;
+  height: 180px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 70px;
+}
+
+.profile-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.profile-left img {
+  width: 82px;
+  height: 82px;
+}
+
+.profile-text h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.profile-text p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 24px;
+}
+
+.profile-actions button {
+  width: 160px;
+  height: 34px;
+  border: 1px solid #000;
+  border-radius: 999px;
+  background: rgba(217, 217, 217, 0.4);
+  font-family: "Kyiv", sans-serif;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.profile-actions button:hover {
+  background: #45FC47;
+  transform: translateY(-1px);
+}
+
+.my-items-pill {
+  width: 160px;
+  height: 34px;
+  margin: 62px auto 52px;
+  background: #45FC47;
+  border: 1px solid #000;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.items-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.add-item {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-item:hover {
+  transform: scale(1.02);
+  opacity: 0.75;
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-bar">
+  <div class="nav-left">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="logo">SWAP & SHOP</div>
+
+<div class="nav-right">
+  <a href="#" id="searchBtn">Search</a>
+  <a href="profile.html">
+    <img src="Union.png" width="24">
+  </a>
+</div>
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <button class="close-search" id="closeSearch">×</button>
+
+  <div class="search-box">
+    <span class="search-icon">⌕</span>
+    <input type="text">
+  </div>
+</div>
+
+<main class="profile-main">
+
+  <section class="profile-box">
+    <div class="profile-left">
+      <img src="profile.png">
+      <div class="profile-text">
+        <h1>limb132</h1>
+        <p>limb132@newschool.edu</p>
+      </div>
+    </div>
+
+    <div class="profile-actions">
+      <button onclick="alert('Coming soon')">Edit Profile</button>
+      <button onclick="location.href='landing.html'">Log Out</button>
+    </div>
+  </section>
+
+  <div class="my-items-pill">My Items</div>
+
+  <section class="items-grid">
+    <img src="3.png">
+    <img src="1.png">
+    <img src="2.png">
+    <img src="add.png" class="add-item">
+  </section>
+
+</main>
+
+<script>
+const searchBtn = document.getElementById("searchBtn");
+const searchOverlay = document.getElementById("searchOverlay");
+const closeSearch = document.getElementById("closeSearch");
+const searchInput = searchOverlay.querySelector("input");
+
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  searchOverlay.classList.add("show");
+  searchInput.focus();
+});
+
+closeSearch.addEventListener("click", () => {
+  searchOverlay.classList.remove("show");
+});
+</script>
+
+</body>
+</html>
