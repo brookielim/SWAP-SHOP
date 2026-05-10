@@ -353,6 +353,140 @@ body,
   outline: none;
   font-size: 32px;
 }
+  @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .top-bar {
+    height: auto;
+    padding: 22px 20px;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .logo {
+    font-size: 34px;
+    order: 1;
+  }
+
+  .nav-left,
+  .nav-right {
+    position: static;
+    order: 2;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    font-size: 15px;
+  }
+
+  .nav-right {
+    order: 3;
+  }
+
+  .filter-bar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 22px 20px;
+  }
+
+  .filter {
+    flex: 0 0 auto;
+    padding: 9px 20px;
+    font-size: 14px;
+  }
+
+  .main {
+    margin-top: 20px;
+    padding: 0 20px 50px;
+  }
+
+  .swap-area {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .left-card,
+  .right-card {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    left: auto;
+    right: auto;
+  }
+
+  .my-label {
+    top: -36px;
+    left: 24px;
+    width: 110px;
+    height: 42px;
+    font-size: 14px;
+    padding-top: 10px;
+  }
+
+  .card-stack,
+  .card-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .stack-card,
+  .item-card {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swap-icon {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 42px;
+    margin: -12px 0;
+  }
+
+  .buttons {
+    width: 90%;
+    height: 40px;
+    bottom: 0;
+    font-size: 13px;
+  }
+
+  .popup {
+    width: calc(100% - 40px);
+    height: auto;
+    padding: 28px 34px;
+  }
+
+  .popup h2 {
+    font-size: 22px;
+  }
+
+  .popup p {
+    font-size: 16px;
+  }
+
+  .search-overlay {
+    top: 0;
+    height: 180px;
+  }
+
+  .search-box {
+    left: 24px;
+    bottom: 30px;
+    width: calc(100% - 48px);
+  }
+
+  .search-box input {
+    font-size: 24px;
+  }
+}
 </style>
 </head>
 
