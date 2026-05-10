@@ -229,6 +229,127 @@ a {
   transform: scale(1.02);
   opacity: 0.75;
 }
+  @media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .top-bar {
+    height: 150px;
+    padding: 0 22px;
+  }
+
+  .logo {
+    font-size: 40px;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  .nav-left {
+    left: 22px;
+    top: 96px;
+    gap: 22px;
+    font-size: 16px;
+  }
+
+  .nav-right {
+    right: 22px;
+    top: 96px;
+    gap: 18px;
+    font-size: 16px;
+  }
+
+  .nav-right img {
+    width: 22px;
+  }
+
+  .search-overlay {
+    top: 150px;
+    height: 160px;
+  }
+
+  .search-box {
+    left: 24px;
+    bottom: 26px;
+    width: calc(100% - 48px);
+  }
+
+  .search-box input {
+    font-size: 24px;
+  }
+
+  .profile-main {
+    padding: 40px 20px 60px;
+  }
+
+  .profile-box {
+    height: auto;
+    padding: 34px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .profile-left {
+    width: 100%;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .profile-left img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .profile-text h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .profile-text p {
+    font-size: 14px;
+  }
+
+  .profile-meta {
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .profile-meta span {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .profile-actions {
+    width: 100%;
+  }
+
+  .profile-actions button {
+    width: 100%;
+    height: 42px;
+    font-size: 15px;
+  }
+
+  .my-items-pill {
+    margin: 42px auto 36px;
+    width: 140px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .items-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .items-grid img {
+    width: 100%;
+  }
+}
 </style>
 </head>
 
