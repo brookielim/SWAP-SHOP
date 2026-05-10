@@ -354,8 +354,10 @@ body,
   font-size: 32px;
 }
   @media (max-width: 768px) {
+
   body {
     overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .top-bar {
@@ -364,17 +366,24 @@ body,
   }
 
   .logo {
-    font-size: 42px;
+    font-size: 40px;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
   }
 
   .nav-left {
+    position: absolute;
     left: 22px;
     top: 96px;
-    gap: 24px;
+    gap: 22px;
     font-size: 16px;
   }
 
   .nav-right {
+    position: absolute;
     right: 22px;
     top: 96px;
     gap: 18px;
@@ -382,22 +391,27 @@ body,
   }
 
   .nav-right img {
-    width: 24px;
+    width: 22px;
   }
 
   .filter-bar {
     justify-content: flex-start;
-    gap: 10px;
-    padding: 24px 14px 42px;
+    gap: 8px;
+    padding: 22px 12px 44px;
     overflow-x: auto;
     white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .filter-bar::-webkit-scrollbar {
+    display: none;
   }
 
   .filter {
     flex: 0 0 auto;
-    min-width: auto;
-    padding: 8px 18px;
+    padding: 8px 16px;
     font-size: 14px;
+    min-width: auto;
   }
 
   .main {
@@ -466,12 +480,6 @@ body,
     height: 40px;
     bottom: 0;
     font-size: 13px;
-  }
-
-  .popup {
-    width: calc(100% - 36px);
-    height: auto;
-    padding: 28px 32px;
   }
 
   .search-overlay {
