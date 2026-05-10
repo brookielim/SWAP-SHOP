@@ -66,7 +66,6 @@ a {
   color: black;
 }
 
-/* SEARCH */
 .search-overlay {
   position: fixed;
   top: 118px;
@@ -161,6 +160,21 @@ a {
   font-size: 15px;
 }
 
+.profile-meta {
+  margin-top: 14px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.profile-meta span {
+  padding: 6px 12px;
+  border: 1px solid #000;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 13px;
+}
+
 .profile-actions {
   display: flex;
   gap: 24px;
@@ -228,12 +242,12 @@ a {
 
   <div class="logo">SWAP & SHOP</div>
 
-<div class="nav-right">
-  <a href="#" id="searchBtn">Search</a>
-  <a href="profile.html">
-    <img src="Union.png" width="24">
-  </a>
-</div>
+  <div class="nav-right">
+    <a href="#" id="searchBtn">Search</a>
+    <a href="profile.html">
+      <img src="Union.png" width="24">
+    </a>
+  </div>
 </header>
 
 <div class="search-overlay" id="searchOverlay">
@@ -253,6 +267,12 @@ a {
       <div class="profile-text">
         <h1>limb132</h1>
         <p>limb132@newschool.edu</p>
+
+        <div class="profile-meta">
+          <span>★ 4.8 rating</span>
+          <span>23 successful swaps</span>
+          <span>verified trader</span>
+        </div>
       </div>
     </div>
 
