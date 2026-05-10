@@ -359,47 +359,51 @@ body,
   }
 
   .top-bar {
-    height: auto;
-    padding: 22px 20px;
-    flex-direction: column;
-    gap: 18px;
+    height: 150px;
+    padding: 0 22px;
   }
 
   .logo {
-    font-size: 34px;
-    order: 1;
+    font-size: 42px;
   }
 
-  .nav-left,
-  .nav-right {
-    position: static;
-    order: 2;
-    display: flex;
-    justify-content: center;
-    gap: 22px;
-    font-size: 15px;
+  .nav-left {
+    left: 22px;
+    top: 96px;
+    gap: 24px;
+    font-size: 16px;
   }
 
   .nav-right {
-    order: 3;
+    right: 22px;
+    top: 96px;
+    gap: 18px;
+    font-size: 16px;
+  }
+
+  .nav-right img {
+    width: 24px;
   }
 
   .filter-bar {
     justify-content: flex-start;
+    gap: 10px;
+    padding: 24px 14px 42px;
     overflow-x: auto;
-    gap: 12px;
-    padding: 22px 20px;
+    white-space: nowrap;
   }
 
   .filter {
     flex: 0 0 auto;
-    padding: 9px 20px;
+    min-width: auto;
+    padding: 8px 18px;
     font-size: 14px;
   }
 
   .main {
-    margin-top: 20px;
-    padding: 0 20px 50px;
+    margin-top: 0;
+    padding: 0 18px 70px;
+    display: block;
   }
 
   .swap-area {
@@ -408,25 +412,16 @@ body,
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 48px;
+    gap: 54px;
   }
 
   .left-card,
   .right-card {
     position: relative;
-    width: 100%;
-    max-width: 360px;
     left: auto;
     right: auto;
-  }
-
-  .my-label {
-    top: -36px;
-    left: 24px;
-    width: 110px;
-    height: 42px;
-    font-size: 14px;
-    padding-top: 10px;
+    width: 100%;
+    max-width: 360px;
   }
 
   .card-stack,
@@ -440,6 +435,16 @@ body,
   .item-card {
     width: 100%;
     height: 100%;
+    object-fit: contain;
+  }
+
+  .my-label {
+    top: -40px;
+    left: 14px;
+    width: 120px;
+    height: 44px;
+    font-size: 16px;
+    padding-top: 10px;
   }
 
   .swap-icon {
@@ -447,8 +452,13 @@ body,
     left: auto;
     top: auto;
     transform: none;
-    width: 42px;
+    width: 44px;
     margin: -12px 0;
+  }
+
+  .right-content {
+    position: relative;
+    width: 100%;
   }
 
   .buttons {
@@ -459,27 +469,19 @@ body,
   }
 
   .popup {
-    width: calc(100% - 40px);
+    width: calc(100% - 36px);
     height: auto;
-    padding: 28px 34px;
-  }
-
-  .popup h2 {
-    font-size: 22px;
-  }
-
-  .popup p {
-    font-size: 16px;
+    padding: 28px 32px;
   }
 
   .search-overlay {
-    top: 0;
-    height: 180px;
+    top: 150px;
+    height: 160px;
   }
 
   .search-box {
     left: 24px;
-    bottom: 30px;
+    bottom: 28px;
     width: calc(100% - 48px);
   }
 
